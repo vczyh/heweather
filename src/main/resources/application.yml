@@ -1,0 +1,27 @@
+server:
+  port: 8080
+#  servlet:
+  context-path: /heweather
+
+
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://127.0.0.1:3306/weather?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+#    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: com.vczyh.heweather.domain.po
+
+#pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

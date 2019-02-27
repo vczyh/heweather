@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vczyh.heweather.dao.mapper.ChinaCityMapper">
+    <resultMap id="BaseResultMap" type="com.vczyh.heweather.domain.po.ChinaCity">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="City_ID" property="cityId" jdbcType="VARCHAR"/>
+        <result column="City_EN" property="cityEn" jdbcType="VARCHAR"/>
+        <result column="City_CN" property="cityCn" jdbcType="VARCHAR"/>
+        <result column="Country_code" property="countryCode" jdbcType="VARCHAR"/>
+        <result column="Country_EN" property="countryEn" jdbcType="VARCHAR"/>
+        <result column="Country_CN" property="countryCn" jdbcType="VARCHAR"/>
+        <result column="Province_EN" property="provinceEn" jdbcType="VARCHAR"/>
+        <result column="Province_CN" property="provinceCn" jdbcType="VARCHAR"/>
+        <result column="Admin_district_EN" property="adminDistrictEn" jdbcType="VARCHAR"/>
+        <result column="Admin_district_CN" property="adminDistrictCn" jdbcType="VARCHAR"/>
+        <result column="Latitude" property="latitude" jdbcType="VARCHAR"/>
+        <result column="Longitude" property="longitude" jdbcType="VARCHAR"/>
+        <result column="AD_code" property="adCode" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id
+        ,
+        City_ID,
+        City_EN,
+        City_CN,
+        Country_code,
+        Country_EN,
+        Country_CN,
+        Province_EN,
+        Province_CN,
+        Admin_district_EN,
+        Admin_district_CN,
+        Latitude,
+        Longitude,
+        AD_code
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from china_city_list
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectByCityId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from china_city_list
+        where City_ID = #{cityId}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from china_city_list;
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from china_city_list
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.vczyh.heweather.domain.po.ChinaCity">
+        insert into china_city_list (id, City_ID, City_EN,
+                                     City_CN, Country_code, Country_EN,
+                                     Country_CN, Province_EN, Province_CN,
+                                     Admin_district_EN, Admin_district_CN, Latitude,
+                                     Longitude, AD_code)
+        values (#{id,jdbcType=INTEGER}, #{cityId,jdbcType=VARCHAR}, #{cityEn,jdbcType=VARCHAR},
+                #{cityCn,jdbcType=VARCHAR}, #{countryCode,jdbcType=VARCHAR}, #{countryEn,jdbcType=VARCHAR},
+                #{countryCn,jdbcType=VARCHAR}, #{provinceEn,jdbcType=VARCHAR}, #{provinceCn,jdbcType=VARCHAR},
+                #{adminDistrictEn,jdbcType=VARCHAR}, #{adminDistrictCn,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR},
+                #{longitude,jdbcType=VARCHAR}, #{adCode,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.vczyh.heweather.domain.po.ChinaCity">
+        insert into china_city_list
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="cityId != null">
+                City_ID,
+            </if>
+            <if test="cityEn != null">
+                City_EN,
+            </if>
+            <if test="cityCn != null">
+                City_CN,
+            </if>
+            <if test="countryCode != null">
+                Country_code,
+            </if>
+            <if test="countryEn != null">
+                Country_EN,
+            </if>
+            <if test="countryCn != null">
+                Country_CN,
+            </if>
+            <if test="provinceEn != null">
+                Province_EN,
+            </if>
+            <if test="provinceCn != null">
+                Province_CN,
+            </if>
+            <if test="adminDistrictEn != null">
+                Admin_district_EN,
+            </if>
+            <if test="adminDistrictCn != null">
+                Admin_district_CN,
+            </if>
+            <if test="latitude != null">
+                Latitude,
+            </if>
+            <if test="longitude != null">
+                Longitude,
+            </if>
+            <if test="adCode != null">
+                AD_code,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="cityId != null">
+                #{cityId,jdbcType=VARCHAR},
+            </if>
+            <if test="cityEn != null">
+                #{cityEn,jdbcType=VARCHAR},
+            </if>
+            <if test="cityCn != null">
+                #{cityCn,jdbcType=VARCHAR},
+            </if>
+            <if test="countryCode != null">
+                #{countryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="countryEn != null">
+                #{countryEn,jdbcType=VARCHAR},
+            </if>
+            <if test="countryCn != null">
+                #{countryCn,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceEn != null">
+                #{provinceEn,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceCn != null">
+                #{provinceCn,jdbcType=VARCHAR},
+            </if>
+            <if test="adminDistrictEn != null">
+                #{adminDistrictEn,jdbcType=VARCHAR},
+            </if>
+            <if test="adminDistrictCn != null">
+                #{adminDistrictCn,jdbcType=VARCHAR},
+            </if>
+            <if test="latitude != null">
+                #{latitude,jdbcType=VARCHAR},
+            </if>
+            <if test="longitude != null">
+                #{longitude,jdbcType=VARCHAR},
+            </if>
+            <if test="adCode != null">
+                #{adCode,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.vczyh.heweather.domain.po.ChinaCity">
+        update china_city_list
+        <set>
+            <if test="cityId != null">
+                City_ID = #{cityId,jdbcType=VARCHAR},
+            </if>
+            <if test="cityEn != null">
+                City_EN = #{cityEn,jdbcType=VARCHAR},
+            </if>
+            <if test="cityCn != null">
+                City_CN = #{cityCn,jdbcType=VARCHAR},
+            </if>
+            <if test="countryCode != null">
+                Country_code = #{countryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="countryEn != null">
+                Country_EN = #{countryEn,jdbcType=VARCHAR},
+            </if>
+            <if test="countryCn != null">
+                Country_CN = #{countryCn,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceEn != null">
+                Province_EN = #{provinceEn,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceCn != null">
+                Province_CN = #{provinceCn,jdbcType=VARCHAR},
+            </if>
+            <if test="adminDistrictEn != null">
+                Admin_district_EN = #{adminDistrictEn,jdbcType=VARCHAR},
+            </if>
+            <if test="adminDistrictCn != null">
+                Admin_district_CN = #{adminDistrictCn,jdbcType=VARCHAR},
+            </if>
+            <if test="latitude != null">
+                Latitude = #{latitude,jdbcType=VARCHAR},
+            </if>
+            <if test="longitude != null">
+                Longitude = #{longitude,jdbcType=VARCHAR},
+            </if>
+            <if test="adCode != null">
+                AD_code = #{adCode,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.vczyh.heweather.domain.po.ChinaCity">
+        update china_city_list
+        set City_ID           = #{cityId,jdbcType=VARCHAR},
+            City_EN           = #{cityEn,jdbcType=VARCHAR},
+            City_CN           = #{cityCn,jdbcType=VARCHAR},
+            Country_code      = #{countryCode,jdbcType=VARCHAR},
+            Country_EN        = #{countryEn,jdbcType=VARCHAR},
+            Country_CN        = #{countryCn,jdbcType=VARCHAR},
+            Province_EN       = #{provinceEn,jdbcType=VARCHAR},
+            Province_CN       = #{provinceCn,jdbcType=VARCHAR},
+            Admin_district_EN = #{adminDistrictEn,jdbcType=VARCHAR},
+            Admin_district_CN = #{adminDistrictCn,jdbcType=VARCHAR},
+            Latitude          = #{latitude,jdbcType=VARCHAR},
+            Longitude         = #{longitude,jdbcType=VARCHAR},
+            AD_code           = #{adCode,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
