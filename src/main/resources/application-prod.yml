@@ -1,0 +1,7 @@
+server:
+  port: 8082
+  context-path: /heweather
+spring:
+  datasource:
+    username: root
+    password: vczyh123
