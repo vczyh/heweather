@@ -74,6 +74,12 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <profiles>
+                        <profile>dev</profile>
+                        <profile>prod</profile>
+                    </profiles>
+                </configuration>
             </plugin>
             <!-- mybatis generator 自动生成代码插件 -->
             <plugin>
